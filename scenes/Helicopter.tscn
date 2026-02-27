@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://farmeex_helicopter"]
+
+[ext_resource type="Script" uid="uid://farmeex_helicopter_script" path="res://scripts/Helicopter.gd" id="1_helicopter"]
+
+[node name="Helicopter" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_helicopter")

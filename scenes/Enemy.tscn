@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://farmeex_enemy"]
+
+[ext_resource type="Script" uid="uid://farmeex_enemy_script" path="res://scripts/Enemy.gd" id="1_enemy"]
+
+[node name="Enemy" type="CharacterBody2D"]
+collision_layer = 16
+collision_mask = 1
+script = ExtResource("1_enemy")

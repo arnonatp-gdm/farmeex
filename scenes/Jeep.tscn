@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://farmeex_jeep"]
+
+[ext_resource type="Script" uid="uid://farmeex_jeep_script" path="res://scripts/Jeep.gd" id="1_jeep"]
+
+[node name="Jeep" type="CharacterBody2D"]
+collision_layer = 1
+collision_mask = 2
+script = ExtResource("1_jeep")

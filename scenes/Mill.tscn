@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://farmeex_mill"]
+
+[ext_resource type="Script" uid="uid://farmeex_mill_script" path="res://scripts/Mill.gd" id="1_mill"]
+
+[node name="Mill" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_mill")
