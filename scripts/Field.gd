@@ -6,7 +6,10 @@ extends Node2D
 @export var field_height: float = 160.0
 @export var field_id:     int   = 0
 
-const SPAWN_INTERVAL := 60.0
+const SPAWN_INTERVAL    := 60.0
+# Divisor for computing spawn count from field area; tuned so a 3×4 field
+# (~100×130 px) yields 1 hay sprite and a 10×15 field (~320×480 px) yields ~3.
+const HAY_SPAWN_DIVISOR := 500.0
 const FIELD_COLOR    := Color(0.22, 0.45, 0.12, 1.0)
 const BORDER_COLOR   := Color(0.55, 0.38, 0.10, 1.0)
 
@@ -44,7 +47,7 @@ func _process(delta: float) -> void:
 
 func _spawn_hay() -> void:
 	var area   := field_width * field_height
-	var count  := max(1, int(area / (5.0 * 100.0)))  # scale down to reasonable numbers
+	var count  := max(1, int(area / HAY_SPAWN_DIVISOR))
 	var half_w := field_width  * 0.5 - 16.0
 	var half_h := field_height * 0.5 - 16.0
 

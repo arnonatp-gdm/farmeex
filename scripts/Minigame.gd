@@ -201,7 +201,7 @@ func _start_round() -> void:
 	_item_label.text = _current_item["display"]
 
 	# Build 3 choices: correct + 2 random wrong ones
-	var wrong_pool: Array = []
+	var wrong_pool: Array[String] = []
 	for it in ITEMS:
 		var w: String = it.get(language, it["en"])
 		if w != _correct_answer:

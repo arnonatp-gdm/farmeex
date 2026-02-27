@@ -4,5 +4,5 @@
 
 [node name="Hay" type="Area2D"]
 collision_layer = 4
-collision_mask = 0
+collision_mask = 1
 script = ExtResource("1_hay")

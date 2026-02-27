@@ -50,10 +50,12 @@ func _build_visuals() -> void:
 func _physics_process(delta: float) -> void:
 	# Helicopter ignores terrain — skip CharacterBody2D physics, use direct movement
 	var speed := GameState.get_current_speed()
-	if turning_left:
-		rotation -= turn_speed * delta * sign(speed) if abs(speed) > 5 else 0.0
-	if turning_right:
-		rotation += turn_speed * delta * sign(speed) if abs(speed) > 5 else 0.0
+	var moving := abs(speed) > 5.0
+	if moving:
+		if turning_left:
+			rotation -= turn_speed * delta * sign(speed)
+		if turning_right:
+			rotation += turn_speed * delta * sign(speed)
 
 	# Move with global_translate so it bypasses collision layers
 	global_position += Vector2(cos(rotation), sin(rotation)) * speed * delta

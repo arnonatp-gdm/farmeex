@@ -10,6 +10,7 @@ extends Node2D
 const WORLD_SIZE  := 5120
 const ROAD_WIDTH  := 48
 const ROAD_STEP   := 512   # distance between parallel roads
+const CELL_SIZE   := 32.0  # grid cell size used for field dimensions
 const GRASS_COLOR := Color(0.42, 0.70, 0.28, 1.0)
 const ROAD_COLOR  := Color(0.55, 0.52, 0.48, 1.0)
 const WILD_COLOR  := Color(0.28, 0.50, 0.18, 1.0)
@@ -132,8 +133,8 @@ func _road_side_pos() -> Vector2:
 func _place_fields() -> void:
 	var field_scene := load("res://scenes/Field.tscn")
 	for _i in num_fields:
-		var fw: float = randf_range(3, 10) * 32.0   # 3–10 "cells" wide
-		var fh: float = randf_range(4, 15) * 32.0   # 4–15 "cells" tall
+		var fw: float = randf_range(3, 10) * CELL_SIZE   # 3–10 cells wide
+		var fh: float = randf_range(4, 15) * CELL_SIZE   # 4–15 cells tall
 		var field: Node2D = field_scene.instantiate()
 		field.set("field_width",  fw)
 		field.set("field_height", fh)

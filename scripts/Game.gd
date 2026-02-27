@@ -76,6 +76,11 @@ func _spawn_vehicles() -> void:
 	_helicopter.visible = false
 
 func _activate_vehicle(type: int) -> void:
+	# Capture current active vehicle's position before switching
+	var prev_pos := Vector2.ZERO
+	if _active != null:
+		prev_pos = _active.global_position
+
 	_jeep.visible       = false
 	_helicopter.visible = false
 	_tractor.visible    = false
@@ -90,9 +95,9 @@ func _activate_vehicle(type: int) -> void:
 
 	if _active:
 		_active.visible = true
-		# Preserve position on switch
-		if _tractor.global_position != Vector2.ZERO:
-			_active.global_position = _tractor.global_position
+		# Move the newly active vehicle to where the previous one was
+		if prev_pos != Vector2.ZERO:
+			_active.global_position = prev_pos
 
 func _on_vehicle_changed(type: int) -> void:
 	_activate_vehicle(type)

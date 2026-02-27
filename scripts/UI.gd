@@ -286,10 +286,6 @@ class _DiamondButton extends Node2D:
 	signal released_signal
 
 	const SIZE   := 24.0
-	const COLORS := {
-		"normal": Color(1, 1, 1, 0.85),
-		"pressed": Color(1, 1, 1, 1.0),
-	}
 
 	var _id:     String
 	var _col:    Color

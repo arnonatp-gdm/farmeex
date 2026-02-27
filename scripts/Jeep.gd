@@ -70,16 +70,21 @@ func fire_water_cannon() -> void:
 				enemy.apply_knockback(dir * CANNON_FORCE)
 
 	# Visual flash — brief white circle drawn by a temporary node
-	var flash := _SpawnFlash.new(global_position, CANNON_RANGE, get_parent())
+	var flash := _SpawnFlash.new(global_position, CANNON_RANGE)
 	get_parent().add_child(flash)
 
 # ── Inner helper — ephemeral flash sprite ─────────────────────────────────────
 class _SpawnFlash extends Node2D:
 	var _timer: float = 0.25
 	var _radius: float
-	func _init(pos: Vector2, r: float, parent: Node) -> void:
-		global_position = pos
-		_radius = r
+	var _spawn_pos: Vector2
+
+	func _init(pos: Vector2, r: float) -> void:
+		_spawn_pos = pos
+		_radius    = r
+
+	func _ready() -> void:
+		global_position = _spawn_pos
 	func _draw() -> void:
 		draw_circle(Vector2.ZERO, _radius, Color(0.5, 0.8, 1.0, 0.3))
 	func _process(delta: float) -> void:

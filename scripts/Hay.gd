@@ -12,7 +12,7 @@ var _bob_time: float = 0.0
 func _ready() -> void:
 	add_to_group("hay")
 	collision_layer = 4
-	collision_mask  = 0
+	collision_mask  = 1  # detect vehicles (layer 1)
 
 	# Draw a star-like polygon
 	var poly := Polygon2D.new()

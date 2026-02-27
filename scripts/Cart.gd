@@ -21,7 +21,7 @@ const HISTORY_LEN := 40
 func _ready() -> void:
 	add_to_group("carts")
 	collision_layer = 8
-	collision_mask  = 0
+	collision_mask  = 16  # detect enemies (layer 16)
 
 	var poly := Polygon2D.new()
 	poly.polygon = PackedVector2Array([
