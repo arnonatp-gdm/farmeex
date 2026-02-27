@@ -5,15 +5,50 @@ A game about driving around in a tractor doing farming stuff and having fun whil
 
 - [Godot Engine 4.3](https://godotengine.org/download/) (stable)
 
-## Development Setup
+## Opening the Project in Godot
+
+> **Short answer:** You do **not** need to create a new project (no "farmeex2.0"). This repository *is* the Godot project — just open it in Godot and you're done.
 
 1. Download and install [Godot 4.3](https://godotengine.org/download/).
-2. Clone this repository:
+2. Clone (or pull the latest version of) this repository to your computer:
    ```bash
    git clone https://github.com/arnonatp-gdm/farmeex.git
    ```
-3. Open Godot, click **Import**, and select the `project.godot` file from the cloned folder.
-4. Press **F5** (or the Play button) to run the game in the editor.
+3. Open Godot. In the **Project Manager**, click **Import**.
+4. Browse to the folder where you cloned the repo and select the `project.godot` file inside it.
+5. Click **Import & Edit** — Godot will open the project.
+6. Press **F5** (or the ▶ Play button) to run the game.
+
+### I already have a "farmeex" project from a previous attempt — what do I do?
+
+**You don't need to start over.** Here's how to get back on track without creating a duplicate project:
+
+**Option A — Use this repo as your project (recommended)**
+
+The cleanest approach is to treat this repo as the one true project folder:
+
+1. Open Godot and **remove** the old farmeex project from your Project Manager list (right-click → Remove; this only removes the shortcut, it does not delete files).
+2. Clone this repo (or `git pull` if you already cloned it previously).
+3. Import `project.godot` from the cloned folder as described above.
+4. If your previous attempt had scenes, scripts, or assets you want to keep, copy them from your old project folder into the matching subfolders of the cloned repo (`scenes/`, `scripts/`, etc.), then open the files in Godot and update any references if needed.
+5. Commit the copied files to Git so they are version-controlled:
+   ```bash
+   git add scenes/ scripts/
+   git commit -m "Bring in scenes and scripts from previous attempt"
+   git push
+   ```
+
+**Option B — Point your existing project folder at this repo**
+
+If you prefer to keep working in your existing project folder:
+
+1. Copy the following files from this repo into your existing project folder, replacing any old versions:
+   - `project.godot`
+   - `export_presets.cfg`
+   - `.github/` (entire folder)
+2. Open Godot and import `project.godot` from that folder.
+
+> **Why not farmeex2.0?** A new project name would mean re-creating all your scenes from scratch and losing Git history. Updating the same project keeps everything in one place and makes collaboration easier.
 
 ## Deploying the Game
 
