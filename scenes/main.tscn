@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://farmeex-main"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_right = 400.0
+offset_bottom = 200.0
+text = "Farmeex - Coming Soon!"

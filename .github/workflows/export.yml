@@ -1,0 +1,82 @@
+name: Export Godot Game
+
+on:
+  push:
+    branches:
+      - main
+  release:
+    types: [created]
+
+env:
+  GODOT_VERSION: 4.3
+  EXPORT_NAME: farmeex
+
+jobs:
+  export:
+    name: Export to ${{ matrix.platform }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    strategy:
+      matrix:
+        include:
+          - platform: Windows Desktop
+            artifact: windows
+          - platform: Linux/X11
+            artifact: linux
+          - platform: Web
+            artifact: web
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Godot
+        uses: chickensoft-games/setup-godot@v1
+        with:
+          version: ${{ env.GODOT_VERSION }}
+          use-dotnet: false
+          include-templates: true
+
+      - name: Create export directories
+        run: mkdir -p builds/${{ matrix.artifact }}
+
+      - name: Export game
+        run: |
+          godot --headless --export-release "${{ matrix.platform }}" --path . 2>&1
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.EXPORT_NAME }}-${{ matrix.artifact }}
+          path: builds/${{ matrix.artifact }}/
+          retention-days: 30
+
+  deploy-web:
+    name: Deploy Web build to GitHub Pages
+    runs-on: ubuntu-latest
+    needs: export
+    if: github.ref == 'refs/heads/main'
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Download Web artifact
+        uses: actions/download-artifact@v4.1.3
+        with:
+          name: ${{ env.EXPORT_NAME }}-web
+          path: ./web-build
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./web-build
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
