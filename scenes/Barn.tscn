@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://farmeex_barn"]
+
+[ext_resource type="Script" uid="uid://farmeex_barn_script" path="res://scripts/Barn.gd" id="1_barn"]
+
+[node name="Barn" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_barn")

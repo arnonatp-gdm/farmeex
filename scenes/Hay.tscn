@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://farmeex_hay"]
+
+[ext_resource type="Script" uid="uid://farmeex_hay_script" path="res://scripts/Hay.gd" id="1_hay"]
+
+[node name="Hay" type="Area2D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_hay")

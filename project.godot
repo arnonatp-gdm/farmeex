@@ -1,0 +1,29 @@
+; Engine configuration file.
+; It's best edited using the editor GUI and not directly,
+; but the file format allows manual editing.
+
+config_version=5
+
+[application]
+
+config/name="Farmeex"
+config/description="A tractor farming game with learning minigames"
+config/version="0.1.0"
+run/main_scene="res://scenes/Game.tscn"
+config/features=PackedStringArray("4.3", "2D")
+config/icon="res://icon.svg"
+
+[autoload]
+
+GameState="*res://scripts/GameState.gd"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/mode="canvas_items"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

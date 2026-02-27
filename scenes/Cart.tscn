@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://farmeex_cart"]
+
+[ext_resource type="Script" uid="uid://farmeex_cart_script" path="res://scripts/Cart.gd" id="1_cart"]
+
+[node name="Cart" type="Area2D"]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_cart")

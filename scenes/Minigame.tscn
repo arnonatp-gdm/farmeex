@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://farmeex_minigame"]
+
+[ext_resource type="Script" uid="uid://farmeex_minigame_script" path="res://scripts/Minigame.gd" id="1_minigame"]
+
+[node name="Minigame" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_minigame")

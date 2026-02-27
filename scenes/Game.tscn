@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://farmeex_game"]
+
+[ext_resource type="Script" uid="uid://farmeex_game_script" path="res://scripts/Game.gd" id="1_game"]
+[ext_resource type="PackedScene" uid="uid://farmeex_ui" path="res://scenes/UI.tscn" id="2_ui"]
+[ext_resource type="Script" uid="uid://farmeex_map_script" path="res://scripts/Map.gd" id="3_map"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_game")
+
+[node name="Map" type="Node2D" parent="."]
+script = ExtResource("3_map")
+
+[node name="Vehicles" type="Node2D" parent="."]
+
+[node name="Carts" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.85, 0.85)
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0
+
+[node name="UI" parent="." instance=ExtResource("2_ui")]
